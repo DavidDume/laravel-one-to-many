@@ -25,6 +25,19 @@
             <label for="description" class="form-label">Add Description</label>
             <input type="text" name="description" class="form-control">
         </div>
+
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Add Type</label>
+            <select name="type_id" id="type_id" class="form-control">
+                <option value="">No type</option>
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->title}}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
+        </div>
         
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
