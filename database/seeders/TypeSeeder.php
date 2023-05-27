@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TypeSeeder extends Seeder
 {
@@ -14,6 +16,13 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $types = ['PHP', 'Javascript', 'Vue', 'Laravel'];
+
+        foreach ($types as $type) {
+            $newType = new Type();
+            $newType->title = $type;
+            $newType->slug = Str::slug($type, '-');
+            $newType->save();
+        }
     }
 }
