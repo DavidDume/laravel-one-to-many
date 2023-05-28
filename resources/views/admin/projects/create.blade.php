@@ -28,10 +28,10 @@
 
         <div class="mb-3">
             <label for="type_id" class="form-label">Add Type</label>
-            <select name="type_id" id="type_id" class="form-control">
-                <option value="">No type</option>
+            <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                <option @selected(old('type_id') === "") value="">No type</option>
                 @foreach ($types as $type)
-                    <option value="{{$type->id}}">{{$type->title}}</option>
+                    <option @selected(old('type_id') === $type->id) value="{{$type->id}}">{{$type->title}}</option>
                 @endforeach
             </select>
             @error('type_id')
